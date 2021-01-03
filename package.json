@@ -4,7 +4,8 @@
   "description": "lottie to mp4",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ./node_modules/.bin/jest"
+    "test": "NODE_ENV=test ./node_modules/.bin/jest",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
