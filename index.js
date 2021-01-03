@@ -54,25 +54,53 @@ app.post('/upload', function (req, res) {
   sampleFile.mv(__dirname + "/lottie/" + sampleFile.name, function (err) {
     if (err)
       return res.status(500).send(err);
-    let promise = new Promise(function (resolve, reject) {
-      try {
-        resolve(renderLottie({
-          path: __dirname + '/lottie/' + sampleFile.name,
-          output: __dirname + '/mp4/' + sampleFile.name + '.mp4'
-        }));
-      } catch (err) {
-        console.error(err);
-        reject(new Error("Whoops!"))
-      }
-    });
-
-    // resolve runs the first function in .then
-    promise.then(
-      result => res.download(__dirname + '/mp4/' + sampleFile.name + '.mp4'), // shows "done!" after 1 second
-      error => res.send("Error") // doesn't run
-    );
+    if (req.body.type == "gif") {
+      getGif(sampleFile, res);
+    } else {
+      getMP4(sampleFile, res);
+    }
   });
 });
+
+function getMP4(sampleFile, res) {
+  let promise = new Promise(function (resolve, reject) {
+    try {
+      resolve(renderLottie({
+        path: __dirname + '/lottie/' + sampleFile.name,
+        output: __dirname + '/mp4/' + sampleFile.name + '.mp4'
+      }));
+    } catch (err) {
+      console.error(err);
+      reject(new Error("Whoops!"))
+    }
+  });
+
+  // resolve runs the first function in .then
+  promise.then(
+    result => res.download(__dirname + '/mp4/' + sampleFile.name + '.mp4'), // shows "done!" after 1 second
+    error => res.send("Error") // doesn't run
+  );
+}
+
+function getGif(sampleFile, res) {
+  let promise = new Promise(function (resolve, reject) {
+    try {
+      resolve(renderLottie({
+        path: __dirname + '/lottie/' + sampleFile.name,
+        output: __dirname + '/gif/' + sampleFile.name + '.gif',
+        width: 640
+      }));
+    } catch (err) {
+      console.error(err);
+      reject(new Error("Whoops!"))
+    }
+  });
+
+  promise.then(
+    result => res.download(__dirname + '/gif/' + sampleFile.name + '.gif'), // shows "done!" after 1 second
+    error => res.send("Error") // doesn't run
+  );
+}
 
 const server = http.createServer(app);
 const port = process.env.PORT || 3000;
