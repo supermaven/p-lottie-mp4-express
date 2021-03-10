@@ -31,6 +31,17 @@ body, html {
 	height: 100%;
 	font-family: OpenSans-Regular, sans-serif;
 }
+.file-btn {
+  position: relative;
+  overflow: hidden;
+}
+input {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
 
 /*---------------------------------------------*/
 a {
