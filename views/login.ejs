@@ -34,22 +34,30 @@
     <div class="container-login100">
       <div class="wrap-login100 p-b-160 p-t-50">
         <form action="/upload" enctype="multipart/form-data" method="post" class="login100-form validate-form">
-          
-          <input type="file" name="file" style="color:white">
-          <div style="display: flex; margin-right: 20;">
+          <div class="row">
+            <div class="col-md-6">
+              <input type="file" name="file" style="color:white">
+            </div>
+            <div class="col-md-6">
+              <button class="login100-form-btn">
+                Convert
+              </button>
+            </div>
+
+          </div>
+         
+          <!-- <div style="display: flex; margin-right: 20;">
             <input type="radio" id="male" name="type" value="mp4" style="margin:auto" />
             <label for="mp4" style="color:white; margin:auto">&nbsp;MP4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          </div>
+          </div> -->
           <!-- <div style="display: flex; margin-left: 20;">
             <input type="radio" id="female" name="type" value="gif" style="margin:auto" />
             &nbsp;
             <label for="gif" style="color:white; margin:auto">GIF</label>
           </div> -->
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn">
-              Convert
-            </button>
-          </div>
+          <!-- <div class="container-login100-form-btn">
+            
+          </div> -->
         </form>
       </div>
     </div>
