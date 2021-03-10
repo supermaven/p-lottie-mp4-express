@@ -1,5 +1,6 @@
 - If you want to generate GIFs, you must also install gifski. On macOS, you can run:
 > brew install gifski
+
 - If you want to generate MP4s, you must also install ffmpeg. On macOS, you can run:
 > brew install ffmpeg
 
